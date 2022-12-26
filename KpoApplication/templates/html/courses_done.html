@@ -1,0 +1,25 @@
+{% extends "html/courses.html" %}
+{% load static %}
+{% block courses %}
+
+
+<div class="course-page">
+    <div class="courses">
+        <div class="courses-box">
+            <h1 class="courses-title-top">Курсы </h1>
+        </div>
+        <div class="course-box">
+            {% for c in completed_courses %}
+                <div class="courses-content">
+                    <a href="/task?course={{ c.current_course.number_of_course }}&username={{ request.user.username }}&block={{ c.current_course.blocks.first.id }}&page={{ c.current_course.blocks.first.ex.first.id }}"
+                       class="courses-title">{{ c.current_course.title }}</a><br>
+                    <a href="#" class="courses-text">{{ c.current_course.title }}</a>
+                    <h4 class="difficulty">Сложность: {{ c.current_course.difficulty }}</h4>
+                </div>
+                <hr/>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

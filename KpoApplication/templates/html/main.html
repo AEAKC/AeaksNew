@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>AEAKS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;700&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static '/css/mainpage.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/strelki.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/html.css' %}"/>
+</head>
+<body>
+<div class="top-bar">
+    {% if request.user.is_authenticated %}
+        <div class="login-logout">
+           <div class="username-container"> <a class="user login-usr" href="acc?username={{ request.user.username }}">{{ user.username }}</a></div>
+            <div class="exit-container"><a class="exit login-usr" href="logout/">Выход</a></div>
+        </div>
+    {% else %}
+        <div class="reg-log-btn">
+        <a class="reg" href="registration/">Регистрация</a>
+        <a class="reg" href="login/">Вход</a>
+
+    {% endif %}
+    </div>
+</div>
+<div class="start-box">
+    <div class="start-box-text">
+        <h1>AEAKS</h1>
+        <h2>Курсы программирования на языке Python</h2>
+    </div>
+    <a href="#info-page"
+    >
+        <div class="arrow-down">
+            <span></span>
+            <span></span>
+            <span></span></div
+        >
+    </a>
+</div>
+
+<div id="info-page" class="info-page">
+    <div class="pics-pos">
+        <div class="pics-1">
+            {% if request.user.is_authenticated %}
+            <a class="text-href" href="courses/"
+            ><img
+                    id="pic1"
+                    class="py-pic"
+                    src="{% static '/pics/filetype-py%20(1).svg' %}"
+                    alt="123"
+            />
+                <figcaption>Курсы</figcaption>
+            </a>
+            {% else %}
+             <a class="text-href" href="login/"
+            ><img
+                    id="pic1"
+                    class="py-pic"
+                    src="{% static '/pics/filetype-py%20(1).svg' %}"
+                    alt="123"
+            />
+                <figcaption>Курсы</figcaption>
+            </a>
+            {% endif %}
+        </div>
+        <div class="pics-2">
+            <a class="text-href" href="#"
+            ><img src="{% static '/pics/question-lg.svg' %}" class="py-pic"/>
+                <figcaption>О нас</figcaption>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="cont-div">
+        <h2 class="cont">Конатакты:</h2>
+        <h3 class="cont">Телефон: 89001101969</h3>
+        <h3 class="cont">Почта: step.rus.f@gmail.com</h3>
+    </div>
+    <div class="social-media-div">
+        <h2 class="social-media">Соц.сети</h2>
+        <h3 class="social-media">Telegram: @ac1ds</h3>
+        <h3 class="social-media">VK: stepan_fedorovv</h3>
+    </div>
+    <div class="useful-links-div">
+        <h2 class="useful-links">Полезные ссылки</h2>
+        <h3 class="useful-links">
+            <a class="href-useful" href="courses/">Курсы</a>
+        </h3>
+        <h3 class="useful-links"><a class="href-useful" href="#">О нас</a></h3>
+    </div>
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Добавить плавную прокрутку до всех ссылок
+        $("a").on("click", function (event) {
+            // Убедись в этом что .hash имеет значение перед переопределением поведения по умолчанию
+            if (this.hash !== "") {
+                // Запретить поведение щелчка якоря по умолчанию
+                event.preventDefault();
+
+                // Хранить хэш
+                var hash = this.hash;
+
+                // Использование метода animate() jQuery для добавления плавной прокрутки страницы
+                // Необязательное число (800) указывает количество миллисекунд, необходимых для прокрутки до указанной области
+                $("html, body").animate(
+                    {
+                        scrollTop: $(hash).offset().top,
+                    },
+                    800,
+                    function () {
+                        // Добавить хэш (#) для URL-адреса после завершения прокрутки (поведение щелчка по умолчанию)
+                        window.location.hash = hash;
+                    }
+                );
+            } // Конец, если
+        });
+    });
+</script>
+</html>

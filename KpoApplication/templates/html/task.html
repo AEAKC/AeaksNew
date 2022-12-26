@@ -1,0 +1,69 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача</title>
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static '/css/task.css' %}">
+</head>
+<body>
+<nav>
+    <div class="nav-bar">
+        <div>
+            <h3 class="side-title"><a class="href-title" href="/">АЕАКС</a></h3>
+            <h2 class="course-title">Текущий курс</h2>
+            {% for b in blocks %}
+                <ul class="side-menu">
+                    <li class="li-side-bar"><a href="?course={{ current_course }}&username={{ request.user.username }}&block={{ b.pk }}&page={{ b.ex.first.id }}"
+                                               class="href-in-links">{{ b.title}}<br></a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        <div class="acc-cont">
+            <a class="back-courses" href="/courses">Курсы</a>
+        </div>
+    </div>
+    <div class="task-page">
+        <div class="task-header">
+        <div class="header-content">
+            <div class="task-top-bar">
+             {% for p in paginator%}
+                    <h3 class="task_number">
+                        <a href="?course={{ current_course }}&username={{ request.user.username }}&block={{ current_block }}&page={{ p.pk }}"
+                           class={% if p in completed_tasks %} "task-decorate-number-success" {% elif p in incompleted_tasks %}
+                               "task-decorate-number-failed" {% else %} task-decorate-number {% endif %}>
+                        {{ p.task_number }}
+                        </a>
+                    {% endfor %}
+                    </h3>
+            <div class="acc-pos">
+                <a class="acc" href="/acc?username={{ request.user.username }}">{{ request.user.username }}</a><br>
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class="task-content">
+            <div class="task-title-text-input">
+                <h1 class="task-title">{{ title }}</h1>
+                <h2 class="task-text">{{ text }}</h2>
+                <form class="input-text-form" method="POST">
+                    {% csrf_token %}
+
+                    <div class="textarea-pos"><textarea name="codefield" class="input-text"></textarea><br></div>
+                    <button class="btn-submit" type="submit">Проверить</button>
+                    {% if result is not None %}
+                        <h1 id="result" value="{{ result }}">{% if result %} Правильно {% else %}
+                            Неправильно {% endif %}</h1>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+</nav>
+
+</body>
+</html>

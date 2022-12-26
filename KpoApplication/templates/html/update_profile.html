@@ -1,0 +1,78 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "css/update_profile.css" %}">
+</head>
+<body>
+<a href="/acc?username={{ request.user.username }}"><img class="back-to-user" src="{% static 'pics/arrow-left.svg' %}" ></a>
+<div class="update-container">
+    <div class="update-photo">
+        <div class="update-photo-container">
+        {% if user_photo.photo %}
+            <img class="user-photo" src="{{ user_photo.photo.url }}">
+        {% else%}
+            <img class="user-photo" src="{% static 'pics/person.svg' %}">
+        {% endif %}
+            <div class="update-photo-form">
+            <h3 class="username-under-photo">{{ request.user.username }}</h3>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="bts-in-form">
+                        <input type="file" name="image" class="custom-file-input">
+                        <button type="submit" name="update-photo" class="btn-pic-update"><h3>Изменить изображение профиля</h3></button>
+                        {% if error_msg %}
+                            <h3>{{ error_msg }}</h3>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="update-acc-info">
+        <div class="update-acc-info-container">
+            <div class="username-update-container">
+               <div class="update-info-container">
+                <form method="post" name="update-username">
+                    {% csrf_token %}
+                    <label for="username-update" class="label-username-update">Изменить имя пользователя</label>
+                    <div class="username-update"><input type="text" id="username-update" name="update-username" class="input-username-update"
+                                                        placeholder="{{ request.user.username }}">
+                        <button class="username-update-btn" name="update-username-btn" type="submit">Обновить</button>
+                        {% if username_error%}
+                        <h5 class="username-error">{{ username_error }}</h5>
+                        {% endif %}
+                    </div>
+                </form>
+                 <form method="post" name="update-email">
+                    {% csrf_token %}
+                    <label for="username-update" class="label-username-update">Изменить почту</label>
+                    <div class="username-update"><input type="email" id="username-update" name="update-email" class="input-username-update"
+                                                        placeholder="{{ request.user.email }}">
+                        <button class="username-update-btn" name="update-email-btn" type="submit">Обновить</button>
+                    </div>
+                </form>
+               </div></div>
+                <div class="reset-password-container">
+                    <div class="reset-password-form">
+                        <form method="post">
+                            <label class="label-reset" for="email-to-reset">Обновление пароля</label>
+                            <div class="reset-form-container">
+                                <input type="email" id="email-to-reset" placeholder="example@root.com" class="reset-input">
+                                <button class="reset-password-btn">Отправить код</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

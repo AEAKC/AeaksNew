@@ -1,0 +1,159 @@
+.update-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.update-photo-container{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+
+}
+.update-acc-info-containe{
+    display: flex;
+    flex-direction: column;
+}
+.user-photo{
+    border-radius: 500px;
+    border: 5px solid rgba(0, 255, 255, 0.3);
+    width: 350px;
+    height: 350px;
+}
+.user-photo-default{
+    border-radius: 500px;
+    border: 5px solid rgba(0, 255, 255, 0.3);
+    width: 200px;
+}
+.username-under-photo{
+    margin-bottom: 30px;
+    font-family: 'Martian Mono', monospace;
+}
+
+.update-photo-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.custom-file-input {
+  /*color: transparent;*/
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+    margin-left: -43px;
+}
+.custom-file-input::before {
+  display: flex;
+  content: 'Выбрать файл';
+  color: black;
+  justify-content: center;
+  text-align: left;
+  background-color: rgba(0, 255, 255, 0.3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10pt;
+  font-family: 'Martian Mono', monospace;
+
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active {
+  outline: 0;
+}
+.bts-in-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.update-acc-info{
+    display: flex;
+    align-items: center;
+    width: 600px;
+    justify-content: center;
+    margin-top: 14vh;
+    background-color: rgba(0, 255, 255, 0.3);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.username-update-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+.username-update{
+    margin-bottom:10px ;
+}
+.input-username-update{
+    height: 30px;
+    width: 184px;
+}
+.username-update-btn{
+    background: none;
+    border: none;
+    font-family: 'Martian Mono', monospace;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+.label-username-update{
+    margin-bottom: 10px;
+    font-family: 'Martian Mono', monospace;
+    font-size: 14px;
+}
+.btn-pic-update{
+  border: 1px solid #999;
+  border-radius: 3px;
+  background-color: rgba(0, 255, 255, 0.3);
+  outline: none;
+  font-family: 'Martian Mono', monospace;
+  cursor: pointer;
+  font-size: 12px;
+}
+.btn-pic-update:hover{
+     border-color: black;
+}
+.username-error{
+    font-family: 'Martian Mono', monospace;
+}
+.back-to-user{
+    width: 30px;
+    padding-left: 15px;
+    transition: margin-left ease 0.5s ;
+}
+.back-to-user:hover{
+    margin-left: -10px;
+}
+.update-info-container{
+    margin-bottom: 100px;
+}
+
+.reset-form-container{
+    display: flex;
+    flex-direction: row;
+}
+.reset-input{
+    height: 30px;
+    width: 184px;
+}
+
+.reset-password-btn{
+    background: none;
+    border: none;
+    font-family: 'Martian Mono', monospace;
+    font-size: 14px;
+    cursor: pointer;
+}
+.label-reset{
+        margin-bottom: 10px;
+    font-family: 'Martian Mono', monospace;
+    font-size: 14px;
+}

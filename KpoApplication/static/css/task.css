@@ -1,0 +1,98 @@
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+}
+.task-header{
+    display: flex;
+    justify-content: left;
+    background-color: rgba(0, 255, 255, 0.3);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    height: 50px;
+    width: 100%;
+}
+.task_number{
+    font-family: 'Martian Mono', monospace;
+    padding-left: 20px;
+
+}
+.task-top-bar{
+    border-bottom: 1px black groove;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.task-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 40px;
+    text-align: center;
+}
+.task-title{
+    font-family: 'Martian Mono', monospace;
+    padding-bottom: 100px;
+}
+.task-text{
+    font-family: 'Martian Mono', monospace;
+    padding-bottom: 100px;
+}
+
+.input-text{
+    width: 700px;
+    height: 300px;
+    font-size: 30px;
+}
+.textarea-pos{
+    padding-bottom: 20px;
+}
+.btn-submit{
+    font-size: 20px;
+    font-family: 'Martian Mono', monospace;
+    width: 180px;
+    height: 40px;
+    border-radius: 5px;
+    border-color: black;
+    background-color: rgba(0, 255, 255, 0.3);
+    cursor: pointer;
+}
+.btn-submit:hover{
+    background-color: rgba(0, 255, 255, 0.75);
+
+}
+.task-page{
+    width: 100%;
+}
+.input-text{
+    border-radius: 10px;
+    border-color: rgb(0, 0, 0);
+    resize: none;
+}
+.task-decorate-number{
+    text-decoration: none;
+    color: black;
+}
+.task-decorate-number-success{
+    text-decoration: none;
+    color: green;
+}
+.task-decorate-number-failed{
+    text-decoration: none;
+    color: red;
+}
+.acc{
+    text-decoration: none;
+    color: black;
+    font-family: 'Martian Mono', monospace;
+    font-size: 20px;
+
+}
+.header-content{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

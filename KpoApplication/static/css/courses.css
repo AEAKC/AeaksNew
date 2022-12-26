@@ -1,0 +1,63 @@
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+}
+
+.courses-box {
+    justify-content: center;
+    align-items: center;
+    font-family: 'Martian Mono', monospace;
+    width: 145vh;
+}
+.course-box{
+    padding-top: 100px;
+}
+.courses-box .courses-title-top {
+    text-align: center;
+}
+
+.courses {
+    flex-direction: row;
+    font-family: 'Martian Mono', monospace;
+    margin-top: 14px;
+    padding-left: 0;
+
+}
+.course-page {
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.courses-title {
+    font-size: 30px;
+    font-family: 'Martian Mono', monospace;
+}
+
+.courses-content {
+    display: flex;
+    justify-content: right;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 255, 255, 0.3);
+
+}
+
+.courses-content .courses-title {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+}
+.courses-content .courses-text{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+hr{
+    margin:5px 0;
+    background-color: #000;: ;
+    height: 2px;
+}

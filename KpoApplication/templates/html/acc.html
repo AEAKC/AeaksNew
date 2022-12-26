@@ -1,0 +1,72 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static '/css/acc.css' %}">
+    <title>Аккаунт</title>
+</head>
+<body>
+<div class="back"><a href="/"><img class="arrow-back"
+                                                                 src="{% static 'pics/arrow-left.svg' %}"> </a></div>
+<div class="main-cont">
+    <div class="user-background">
+        <div class="user-accinfo-block">
+            <div class="user-img-name-count">
+                <div class="user-img">
+                    <div class="padding-img">
+                        {% if user_dop_info.photo%}
+                        <img class="user-img-img"
+                           src="{{ user_dop_info.photo.url }}">
+                        {% else %}
+                            <img class="user-img-img"
+                           src="{% static 'pics/person.svg' %}">
+                        {% endif %}
+                        <h3 class="user-name">{{ request.user.username }}</h3>
+                        <h4 class="user-name">{{ request.user.email }}</h4>
+                        <h5 class="user-name"><a class="change-link" href="/update_profile?username={{ request.user.username }}">Изменить профиль</a></h5>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="acc-results">
+        <div class="acc-results-pos">
+            <div class="tasks-done">
+                <h4 class="info-text">Всего выполнено задач</h4>
+                <h3 class="info-text">{{ tasks_done }}</h3>
+            </div>
+        {% for h in href_current_course %}
+            {% if new_user %}
+                    <a class="/"><div class="current-courses">
+            {% else %}
+            <a class="href-courses" href="/task?course={{ h.current_course.number_of_course }}&username={{ request.user.username }}&block={{ h.current_course.blocks.first.id }}&page={{ h.current_course.blocks.first.ex.first.id }}"><div class="current-courses">
+            {% endif %}
+                <h4 class="info-text">Текущий курс</h4>
+                {% if current_course_short %}
+                    <h3 class="info-text">{{ current_course_short }}...</h3>
+
+                {% else %}
+                    <h3 class="info-text">{{ current_course }}</h3>
+                {% endif %}
+
+            </div></a>
+        {% endfor %}
+            <a class="href-courses" href="/completed_courses?username={{ request.user.username }}"><div class="courses-done">
+                <h4 class="info-text">Законченно курсов</h4>
+                <h3 class="info-text">{{ completed_courses }}</h3>
+
+            </div></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

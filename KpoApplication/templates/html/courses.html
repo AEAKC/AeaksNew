@@ -1,0 +1,91 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Курсы</title>
+    <link rel="stylesheet" href="{% static '/css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static '/css/courses.css' %}">
+</head>
+<body>
+{% block navigation %}
+    <nav>
+    <div class="nav-bar">
+        <div>
+            <h3 class="side-title"><a class="href-title" href="/">АЕАКС</a></h3>
+            <ul class="side-menu">
+                <li class="li-side-bar"><a href="/courses" class="href-in-links">Все курсы</a></li>
+                <li class="li-side-bar"><a href="/courses_easy/" class="href-in-links">Курсы для начинающих</a></li>
+                <li class="li-side-bar"><a href="/courses_medium/" class="href-in-links">Кусры среднего уровня
+                    сложности</a></li>
+                <li class="li-side-bar"><a href="/courses_hard/" class="href-in-links">Кусры повышенной сложности</a>
+                </li>
+                <li class="li-side-bar"><a class="href-in-links"
+                                           href="/completed_courses?username={{ request.user.username }}">Пройденные
+                    курсы</a></li>
+            </ul>
+        </div>
+        <div class="acc-cont">
+            <a class="acc" href="/acc?username={{ request.user.username }}">{{ request.user.username }}</a><br>
+            <a class="back-courses" href="/">На главную</a>
+        </div>
+    </div>
+{% endblock %}
+{% block courses %}
+    <div class="course-page">
+        <div class="courses">
+            <div class="courses-box">
+                <h1 class="courses-title-top">Курсы </h1>
+            </div>
+            <div class="course-box">
+                {% for c in courses %}
+                    <div class="courses-content">
+                        <a href="/task?course={{ c.number_of_course }}&username={{ request.user.username }}&block={{ c.blocks.first.id }}&page={{ c.blocks.first.ex.first.id }}"
+                           class="courses-title">{{ c.title }}</a><br>
+                        <a href="#" class="courses-text">{{ c.text }}</a>
+                        <h4 class="difficulty">Сложность: {{ c.difficulty.title }}</h4>
+                    </div>
+                    <hr/>
+                {% endfor %}
+                {% if courses_easy %}
+                    {% for c in courses_easy %}
+                        <div class="courses-content">
+                            <a href="/task?course={{ c.number_of_course }}&username={{ request.user.username }}&block={{ c.blocks.first.id }}&page={{ c.blocks.first.ex.first.id }}"
+                               class="courses-title">{{ c.title }}</a><br>
+                            <a href="#" class="courses-text">{{ c.text }}</a>
+                            <h4 class="difficulty">Сложность: {{ c.difficulty.title }}</h4>
+                        </div>
+                        <hr/>
+                    {% endfor %}
+                {% endif %}
+                {% if courses_medium %}
+                    {% for c in courses_medium %}
+                        <div class="courses-content">
+                            <a href="/task?course={{ c.number_of_course }}&username={{ request.user.username }}&block={{ c.blocks.first.id }}&page={{ c.blocks.first.ex.first.id }}"
+                               class="courses-title">{{ c.title }}</a><br>
+                            <a href="#" class="courses-text">{{ c.text }}</a>
+                            <h4 class="difficulty">Сложность: {{ c.difficulty.title }}</h4>
+                        </div>
+                        <hr/>
+                    {% endfor %}
+                {% endif %}
+                {% if courses_hard %}
+                    {% for c in courses_hard %}
+                        <div class="courses-content">
+                            <a href="/task?course={{ c.number_of_course }}&username={{ request.user.username }}&block={{ c.blocks.first.id }}&page={{ c.blocks.first.ex.first.id }}"
+                               class="courses-title">{{ c.title }}</a><br>
+                            <a href="#" class="courses-text">{{ c.text }}</a>
+                            <h4 class="difficulty">Сложность: {{ c.difficulty.title }}</h4>
+                        </div>
+                        <hr/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</nav>
+</body>
+</html>
